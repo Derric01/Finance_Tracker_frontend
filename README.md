@@ -1,72 +1,118 @@
-# Smart Personal Finance Tracker - Frontend
+# 💰 Smart Personal Finance Tracker (Frontend)
 
-A modern and intuitive financial management application built with Next.js, React, and DaisyUI.
+The **Smart Personal Finance Tracker** is a full-featured web application that helps users take control of their finances with powerful tools for tracking transactions, setting budgets, managing financial goals, and receiving AI-driven insights.
 
-## Features
+Built with **Next.js**, **Tailwind CSS (DaisyUI)**, and powered by a **Node.js + MongoDB** backend, this app offers an intuitive interface, multi-currency support, reminder system, and AI financial assistant using **Gemini API**.
 
-- User authentication (login/register)
-- Dashboard with financial overview
-- Transaction management
-- Budget tracking
-- Financial goals
-- Currency conversion
-- AI-powered financial advice
+---
 
-## Tech Stack
+## 🚀 Live Deployment
 
-- Next.js
-- React
-- TailwindCSS with DaisyUI
-- Axios for API communication
+> ⚠️ **IMPORTANT**: Before opening the frontend, click the backend Render link to wake the server. This avoids any connection issues between frontend and backend.
 
-## Getting Started
+🔗 **Backend (Render)**:  
+👉 [https://finance-tracker-backend-m5sf.onrender.com](https://finance-tracker-backend-m5sf.onrender.com)
 
-### Prerequisites
+🔗 **Frontend (Vercel)**:  
+👉 right corner!!
 
-- Node.js 14.x or higher
-- npm or yarn
+---
 
-### Installation
+## ⚙️ Tech Stack
 
-1. Clone the repository
+- **Frontend Framework**: Next.js (React)
+- **Styling**: Tailwind CSS + DaisyUI
+- **State Management**: React Hooks
+- **Routing**: Next.js Routing
+- **API Handling**: Axios with JWT token support
+- **Authentication**: JWT-based, localStorage
+- **Backend**: Node.js + Express.js + MongoDB (via Mongoose)
+- **AI Integration**: Gemini API
+- **Currency Conversion**: External currency exchange API
+
+---
+
+## 🎯 Core Features
+
+- 🔐 User Authentication (JWT)
+- 💸 Income & Expense Tracking with Categories
+- 💰 Budget Planning (with visual trackers)
+- 🎯 Financial Goal Tracking with Milestones
+- ⏰ Smart Reminders for Bills & Goals
+- 🧠 AI-powered Financial Insights
+- 🌍 Multi-Currency Support (with auto conversion)
+- 📈 Dashboard with Graphs & Summaries
+- 🎨 Fully Responsive UI (mobile/tablet/desktop)
+
+---
+
+## 🧪 Local Development
+
 ```bash
 git clone https://github.com/Derric01/Finance_Tracker_frontend.git
 cd Finance_Tracker_frontend
-```
-
-2. Install dependencies
-```bash
 npm install
-# or
-yarn install
+
+# Set up environment variables
+touch .env.local
 ```
 
-3. Create a `.env.local` file in the root directory with:
+Add the following to `.env.local`:
+
 ```
-NEXT_PUBLIC_API_URL=http://localhost:5000/api
+NEXT_PUBLIC_API_URL=https://finance-tracker-backend-m5sf.onrender.com
 ```
 
-4. Run the development server
+Start the development server:
+
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser
+---
 
-### Building for Production
+## 📂 Folder Structure
 
-```bash
-npm run build
-# or
-yarn build
+```
+/pages         → Next.js routing pages  
+/components    → Reusable UI components  
+/utils         → Axios config and helper functions  
+/styles        → Tailwind and DaisyUI styling
 ```
 
-## Deployment
+---
 
-This application is configured for easy deployment on Vercel.
+## 🔒 Security Highlights
 
-## Environment Variables
+- JWT-based secure authentication  
+- Password hashing with industry best practices  
+- CORS configuration and HTTPS  
+- Environment variable-based sensitive data handling  
+- Input validation and sanitization  
 
-- `NEXT_PUBLIC_API_URL`: URL of the backend API
+---
+
+## 🔮 Future Enhancements
+
+- 📱 Mobile app using React Native  
+- 📊 Advanced analytics and reporting  
+- 🧾 Subscription & debt management tools  
+- 🏦 Bank API integration for auto transaction import  
+- 👨‍👩‍👧 Family or group-based expense sharing  
+- 🔁 Recurring transactions and auto-reminders  
+
+---
+
+## 👨‍💻 Author & Project Links
+
+Developed by **Derric Samson**  
+📬 GitHub Profile: [@Derric01](https://github.com/Derric01)
+
+🗂️ Repositories:  
+- **Frontend**: [Finance_Tracker_frontend](https://github.com/Derric01/Finance_Tracker_frontend)  
+- **Backend**: [Finance_Tracker_backend](https://github.com/Derric01/Finance_Tracker_backend)
+
+🌐 Live Links:  
+- Backend (Render): [https://finance-tracker-backend-m5sf.onrender.com](https://finance-tracker-backend-m5sf.onrender.com)  
+- Frontend (Vercel): [https://finance-tracker-frontend-tan.vercel.app/](https://finance-tracker-frontend-tan.vercel.app/)
+
