@@ -77,9 +77,8 @@ export default function Login() {
                 <label className="label">
                   <span className="label-text">Email</span>
                 </label>
-                <div className="input-group">
-                  <span className="bg-base-300 px-3 flex items-center border-y border-l border-gray-700 rounded-l-md">
-                    <FiMail className="text-secondary" />
+                <div className="input-group">                  <span className="bg-base-300 px-3 flex items-center border-y border-l border-gray-700 rounded-l-md">
+                    <FiMail className="text-primary" />
                   </span>
                   <input 
                     type="email" 
@@ -94,9 +93,8 @@ export default function Login() {
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
-                <div className="input-group">
-                  <span className="bg-base-300 px-3 flex items-center border-y border-l border-gray-700 rounded-l-md">
-                    <FiLock className="text-secondary" />
+                <div className="input-group">                  <span className="bg-base-300 px-3 flex items-center border-y border-l border-gray-700 rounded-l-md">
+                    <FiLock className="text-primary" />
                   </span>
                   <input 
                     type="password" 
@@ -122,9 +120,8 @@ export default function Login() {
               </button>
               
               <div className="divider">OR</div>
-              
-              <Link href="/register">
-                <a className="btn btn-outline btn-secondary w-full hover:shadow-lg hover:shadow-secondary/20 transition-all duration-300">
+                <Link href="/register">
+                <a className="btn btn-outline btn-primary w-full hover:shadow-lg hover:shadow-primary/20 transition-all duration-300">
                   <FiUserPlus className="mr-2" />
                   Create Account
                 </a>
