@@ -107,24 +107,23 @@ export default function Transactions() {
     .reduce((sum, t) => sum + t.amount, 0);
   
   const balance = totalIncome - totalExpense;
-
   return (    <Layout>
-      <div className="flex justify-between items-center mb-6 animate-fadeIn">
-        <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Transactions</h1>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 animate-fadeIn">
+        <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Transactions</h1>
         <div className="flex space-x-2">
           <Link href="/dashboard">
-            <a className="btn btn-ghost hover:bg-base-200 transition-colors">
+            <a className="btn btn-ghost btn-sm sm:btn-md hover:bg-base-200 transition-colors">
               <FiArrowLeft className="mr-2" /> Dashboard
             </a>
           </Link>
           <Link href="/transactions/add">
-            <a className="btn btn-primary shadow-md hover:shadow-lg transition-shadow gap-2">
+            <a className="btn btn-primary btn-sm sm:btn-md shadow-md hover:shadow-lg transition-shadow gap-2">
               <FiPlusCircle /> New Transaction
             </a>
           </Link>
         </div>
-      </div>      {/* Summary Cards */}
-      <div className="stats shadow w-full mb-6 bg-gradient-to-r from-base-100 to-base-200 border border-gray-100 animate-fadeIn animation-delay-200">
+      </div>{/* Summary Cards */}
+      <div className="stats stats-vertical sm:stats-horizontal shadow w-full mb-6 bg-gradient-to-r from-base-100 to-base-200 border border-base-300 animate-fadeIn animation-delay-200">
         <div className="stat">
           <div className="stat-figure text-primary">
             <div className="rounded-full bg-primary/10 p-3">
@@ -156,14 +155,12 @@ export default function Transactions() {
           <div className="stat-title font-medium">Expenses</div>
           <div className="stat-value text-error">${totalExpense.toFixed(2)}</div>
         </div>
-      </div>
-        {/* Filters */}
-      <div className="card bg-base-100 shadow-md mb-6 border border-gray-100 hover:shadow-lg transition-all duration-300 animate-fadeIn animation-delay-300">
-        <div className="card-body">
-          <h2 className="card-title text-xl font-bold bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent flex items-center">
+      </div>      {/* Filters */}
+      <div className="card bg-base-100 shadow-md mb-6 border border-base-300 hover:shadow-lg transition-all duration-300 animate-fadeIn animation-delay-300">
+        <div className="card-body">          <h2 className="card-title text-xl font-bold bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent flex items-center">
             <FiFilter className="mr-2 text-secondary" /> Filters
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-2">
             <div className="form-control">
               <label className="label">
                 <span className="label-text font-medium">Transaction Type</span>
@@ -224,9 +221,8 @@ export default function Transactions() {
             </div>
           </div>
         </div>
-      </div>
-        {/* Transactions List */}
-      <div className="card bg-base-100 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300 animate-fadeIn animation-delay-400">
+      </div>      {/* Transactions List */}
+      <div className="card bg-base-100 shadow-xl border border-base-300 hover:shadow-2xl transition-all duration-300 animate-fadeIn animation-delay-400">
         <div className="card-body">
           <h2 className="card-title mb-4 text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Transaction History</h2>
           
@@ -255,15 +251,14 @@ export default function Transactions() {
               </Link>
             </div>
           ) : (
-            <div className="overflow-x-auto">
-              <table className="table w-full">
+            <div className="overflow-x-auto">              <table className="table table-compact sm:table-normal w-full">
                 <thead>
                   <tr>
-                    <th className="bg-base-200/50">Date</th>
-                    <th className="bg-base-200/50">Description</th>
-                    <th className="bg-base-200/50">Category</th>
-                    <th className="bg-base-200/50">Amount</th>
-                    <th className="bg-base-200/50">Actions</th>
+                    <th className="bg-base-200">Date</th>
+                    <th className="bg-base-200">Description</th>
+                    <th className="bg-base-200 hidden sm:table-cell">Category</th>
+                    <th className="bg-base-200">Amount</th>
+                    <th className="bg-base-200">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -271,26 +266,36 @@ export default function Transactions() {
                       <td>
                         <div className="flex items-center space-x-3">
                           <div className="avatar placeholder">
-                            <div className={`bg-${transaction.type === 'income' ? 'success' : 'error'}/10 text-${transaction.type === 'income' ? 'success' : 'error'} rounded-full w-12 flex items-center justify-center`}>
-                              <span className="text-xl">{transaction.type === 'income' ? '+' : '-'}</span>
+                            <div className={`bg-${transaction.type === 'income' ? 'success' : 'error'}/10 text-${transaction.type === 'income' ? 'success' : 'error'} rounded-full w-8 sm:w-12 flex items-center justify-center`}>
+                              <span className="text-base sm:text-xl">{transaction.type === 'income' ? '+' : '-'}</span>
                             </div>
                           </div>
-                          <div>
+                          <div className="hidden sm:block">
                             <div className="font-bold">
                               {new Date(transaction.date).toLocaleDateString()}
                             </div>
                           </div>
+                          <div className="sm:hidden text-xs">
+                            {new Date(transaction.date).toLocaleDateString(undefined, {month: 'short', day: 'numeric'})}
+                          </div>
                         </div>
                       </td>
-                      <td>{transaction.notes}</td>
                       <td>
+                        <div>
+                          <span className="font-medium text-sm sm:text-base">{transaction.notes}</span>
+                          <div className="badge badge-outline badge-sm mt-1 sm:hidden">{transaction.category}</div>
+                        </div>
+                      </td>
+                      <td className="hidden sm:table-cell">
                         <div className="badge badge-outline badge-sm">{transaction.category}</div>
                       </td>                      
                       <td className={transaction.type === 'income' ? 'text-success font-bold' : 'text-error font-bold'}>
-                        {formatCurrency(transaction.amount, transaction.currency)}
+                        <div className="text-sm sm:text-base">
+                          {formatCurrency(transaction.amount, transaction.currency)}
+                        </div>
                       </td>
                       <td>
-                        <div className="flex space-x-2">
+                        <div className="flex space-x-1 sm:space-x-2">
                           <Link href={`/transactions/edit/${transaction._id}`}>
                             <a className="btn btn-ghost btn-xs hover:bg-base-200">
                               <FiEdit />

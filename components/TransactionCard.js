@@ -53,16 +53,16 @@ export default function TransactionCard({ transaction, onEdit, onDelete, currenc
     
     return categories[category] || '💵';
   };
-  
-  return (
+    return (
     <div className={`card bg-base-100 shadow-md hover:shadow-lg transition-all duration-300 border-l-4 ${isIncome ? 'border-success' : 'border-error'} card-hover`}>
-      <div className="card-body p-4">
-        <div className="flex justify-between items-center">
+      <div className="card-body p-3 sm:p-4">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 sm:gap-0">
           <div className="flex items-center">
-            <div className={`p-3 rounded-full mr-4 ${isIncome ? 'bg-success/20 text-success' : 'bg-error/20 text-error'}`}>
-              {isIncome ? <FiArrowUp className="text-lg" /> : <FiArrowDown className="text-lg" />}
+            <div className={`p-2 sm:p-3 rounded-full mr-3 sm:mr-4 ${isIncome ? 'bg-success/20 text-success' : 'bg-error/20 text-error'}`}>
+              {isIncome ? <FiArrowUp className="text-base sm:text-lg" /> : <FiArrowDown className="text-base sm:text-lg" />}
             </div>
-            <div>              <h3 className="font-bold flex items-center">
+            <div>
+              <h3 className="font-bold text-sm sm:text-base flex items-center">
                 <span className="mr-2">{getCategoryEmoji(transaction.category)}</span>
                 {transaction.category}
               </h3>
@@ -76,7 +76,7 @@ export default function TransactionCard({ transaction, onEdit, onDelete, currenc
             </div>
           </div>
           <div className="text-right">
-            <p className={`font-bold text-lg ${isIncome ? 'text-success' : 'text-error'}`}>
+            <p className={`font-bold text-base sm:text-lg ${isIncome ? 'text-success' : 'text-error'}`}>
               {isIncome ? '+' : '-'}{formatCurrency(transaction.amount, transaction.currency || currency)}
             </p>
             <p className="text-xs opacity-70 flex items-center justify-end">
@@ -84,31 +84,30 @@ export default function TransactionCard({ transaction, onEdit, onDelete, currenc
             </p>
           </div>
         </div>
-        
-        {transaction.notes && (
-          <div className="mt-3 pt-2 border-t border-base-300">
-            <p className="text-sm opacity-80 flex items-start">
+          {transaction.notes && (
+          <div className="mt-2 sm:mt-3 pt-2 border-t border-base-300">
+            <p className="text-xs sm:text-sm opacity-80 flex items-start">
               <FiFileText className="mr-2 mt-1 flex-shrink-0" /> 
               {transaction.notes}
             </p>
           </div>
         )}
         
-        <div className="card-actions justify-end mt-3 pt-2 border-t border-base-300">
+        <div className="card-actions justify-end mt-2 sm:mt-3 pt-2 border-t border-base-300">
           {onEdit && (
             <button 
-              className="btn btn-ghost btn-sm" 
+              className="btn btn-ghost btn-xs sm:btn-sm" 
               onClick={() => onEdit(transaction)}
             >
-              <FiEdit className="mr-1" /> Edit
+              <FiEdit className="mr-1" /> <span className="hidden sm:inline">Edit</span>
             </button>
           )}
           {onDelete && (
             <button 
-              className="btn btn-ghost btn-sm text-error" 
+              className="btn btn-ghost btn-xs sm:btn-sm text-error" 
               onClick={() => onDelete(transaction._id)}
             >
-              <FiTrash2 className="mr-1" /> Delete
+              <FiTrash2 className="mr-1" /> <span className="hidden sm:inline">Delete</span>
             </button>
           )}
         </div>
