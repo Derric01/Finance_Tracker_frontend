@@ -22,11 +22,15 @@ export default function Navbar({ updateTheme, currentTheme }) {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };  const toggleTheme = () => {
-    const newTheme = isDarkMode ? 'financelight' : 'financedark';
+    // Get the current theme directly from the HTML element
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'financedark' ? 'financelight' : 'financedark';
+    
+    // Update theme at all levels
     updateTheme(newTheme);
     
-    // Apply theme directly to document element for immediate effect
-    document.documentElement.setAttribute('data-theme', newTheme);
+    // Log for debugging
+    console.log(`Theme toggled from ${currentTheme} to ${newTheme}`);
     
     // Force close the dropdown menu after changing theme
     if (document.activeElement instanceof HTMLElement) {
@@ -210,8 +214,13 @@ export default function Navbar({ updateTheme, currentTheme }) {
               <Link href="/settings">
                 <a>                  <FiSettings />
                   Settings
-                </a>
-              </Link>
+                </a>              </Link>
+            </li>
+            <li>
+              <button onClick={toggleTheme}>
+                {isDarkMode ? <FiSun className="text-yellow-300" /> : <FiMoon className="text-blue-400" />}
+                {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+              </button>
             </li>
             <li>
               <button onClick={handleLogout} className="text-error">

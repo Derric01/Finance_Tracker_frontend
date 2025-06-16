@@ -9,18 +9,16 @@ class MyDocument extends Document {
           <meta name="description" content="Smart Personal Finance Tracker - Manage your finances with ease" />
           <link rel="icon" href="/favicon.ico" />
           <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-          {/* Add script to handle theme initialization on load */}
+          {/* Simplified script to ensure light mode works properly */}
           <script
             dangerouslySetInnerHTML={{
               __html: `
                 (function() {
                   try {
-                    const savedTheme = localStorage.getItem('theme');
-                    if (savedTheme) {
-                      document.documentElement.setAttribute('data-theme', savedTheme);
-                    }
+                    var savedTheme = localStorage.getItem('theme');
+                    document.documentElement.setAttribute('data-theme', savedTheme || 'financelight');
                   } catch (e) {
-                    console.error('Error setting initial theme:', e);
+                    document.documentElement.setAttribute('data-theme', 'financelight');
                   }
                 })();
               `,

@@ -16,10 +16,10 @@ export default function Layout({ children, updateTheme, currentTheme }) {
       router.push('/login');
     }
   }, [router, isPublicRoute]);
-  
-  // Make sure the HTML element has the theme attribute
+    // Make sure the HTML element has the theme attribute
   useEffect(() => {
     if (currentTheme) {
+      console.log('Layout updating theme to:', currentTheme);
       document.documentElement.setAttribute('data-theme', currentTheme);
     }
   }, [currentTheme]);
