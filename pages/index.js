@@ -118,7 +118,7 @@ export default function Home() {
             <div className="flex justify-center mb-6">
               <div className="rounded-full bg-primary/10 p-4 hover:shadow-primary/20 hover:shadow-lg transition-all duration-300 hover:scale-110">
                 <FiDollarSign className="text-4xl text-primary" />              </div>
-            </div>            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/70 text-transparent bg-clip-text transition-all duration-700 hover:scale-[1.02]">
+            </div>            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text transition-all duration-700 hover:scale-[1.02]">
               Smart Personal Finance Tracker
             </h1>
             <p className="text-xl md:text-2xl mb-10 text-base-content opacity-80 transition-all duration-700">
@@ -156,7 +156,7 @@ export default function Home() {
       <div className="py-20 px-4 bg-base-100">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/70 text-transparent bg-clip-text">Powerful Features</h2>
+            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text">Powerful Features</h2>
             <p className="text-xl text-base-content opacity-80 max-w-2xl mx-auto">
               Everything you need to take control of your financial life in one beautiful, intuitive application.
             </p>
@@ -182,7 +182,7 @@ export default function Home() {
         
         <div className="container mx-auto relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/70 text-transparent bg-clip-text inline-block">What Our Users Say</h2>
+            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text inline-block">What Our Users Say</h2>
             <p className="text-xl text-base-content opacity-80 max-w-2xl mx-auto">
               Join thousands of users who have transformed their financial habits with our platform.
             </p>
@@ -198,7 +198,7 @@ export default function Home() {
                   </div>
                   <p className="mb-6 italic text-base-content">{testimonial.comment}</p>
                   <div className="flex items-center">
-                    <div className="avatar placeholder mr-4">                      <div className="bg-gradient-to-br from-primary to-primary/70 text-white rounded-full w-12 hover:shadow-lg transition-all duration-300 hover:scale-110">
+                    <div className="avatar placeholder mr-4">                      <div className="bg-gradient-to-br from-primary to-secondary text-white rounded-full w-12 hover:shadow-lg transition-all duration-300 hover:scale-110">
                         <span>{testimonial.name.charAt(0)}</span>
                       </div>
                     </div>
@@ -219,7 +219,7 @@ export default function Home() {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/10 rounded-full mix-blend-multiply filter blur-3xl"></div>
         
         <div className="container mx-auto text-center max-w-3xl relative z-10">
-          <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/70 text-transparent bg-clip-text inline-block">Ready to Transform Your Finances?</h2>
+          <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text inline-block">Ready to Transform Your Finances?</h2>
           <p className="text-xl mb-10 text-base-content opacity-80">
             Join thousands of users who have already taken control of their financial future with our smart tracking tools.
           </p>
