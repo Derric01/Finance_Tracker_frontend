@@ -21,11 +21,17 @@ export default function Navbar({ updateTheme, currentTheme }) {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-  };
-
-  const toggleTheme = () => {
+  };  const toggleTheme = () => {
     const newTheme = isDarkMode ? 'financelight' : 'financedark';
     updateTheme(newTheme);
+    
+    // Apply theme directly to document element for immediate effect
+    document.documentElement.setAttribute('data-theme', newTheme);
+    
+    // Force close the dropdown menu after changing theme
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
   };
 
   const handleLogout = () => {
@@ -87,15 +93,24 @@ export default function Navbar({ updateTheme, currentTheme }) {
                   Goals
                 </a>
               </Link>
-            </li>
-          </ul>
+            </li>          </ul>
           
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar placeholder">
               <div className="bg-gradient-to-br from-primary to-secondary text-white rounded-full w-10 hover:shadow-lg transition-all duration-300">
                 <span>{getUserInitials()}</span>
               </div>
-            </label>            <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
+            </label>
+            
+            {/* Theme toggle button */}
+            <button 
+              className="btn btn-ghost btn-circle ml-2" 
+              onClick={toggleTheme} 
+              aria-label="Toggle theme"
+              title={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+            >
+              {isDarkMode ? <FiSun className="text-yellow-300" /> : <FiMoon className="text-blue-400" />}
+            </button><ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
               <li className="menu-title">
                 <span>{userData?.name || 'User'}</span>
               </li>

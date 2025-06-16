@@ -108,109 +108,108 @@ export default function Home() {
         <meta name="description" content="Take control of your finances with our intelligent tracking, budgeting, and financial goal-setting platform." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      
-      {/* Hero Section */}
-      <div className="hero min-h-screen bg-gradient-to-br from-emerald-50 to-sky-50 relative overflow-hidden">
+        {/* Hero Section */}
+      <div className="hero min-h-screen bg-gradient-to-br from-primary/5 to-secondary/5 relative overflow-hidden">
         {/* Decorative background circles */}
-        <div className="absolute top-20 left-10 w-64 h-64 bg-emerald-200 rounded-full mix-blend-multiply filter blur-xl opacity-30"></div>
-        <div className="absolute top-40 right-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-30"></div>
-        <div className="absolute -bottom-8 left-1/3 w-56 h-56 bg-indigo-200 rounded-full mix-blend-multiply filter blur-xl opacity-30"></div>
+        <div className="absolute top-20 left-10 w-64 h-64 bg-primary/20 rounded-full mix-blend-multiply filter blur-xl"></div>
+        <div className="absolute top-40 right-10 w-72 h-72 bg-secondary/20 rounded-full mix-blend-multiply filter blur-xl"></div>
+        <div className="absolute -bottom-8 left-1/3 w-56 h-56 bg-accent/20 rounded-full mix-blend-multiply filter blur-xl"></div>
         
         <div className="hero-content text-center max-w-5xl px-4 relative z-10">
           <div className="max-w-md md:max-w-3xl">
             <div className="flex justify-center mb-6">
-              <div className="rounded-full bg-emerald-100 p-4 hover:shadow-emerald-200/50 hover:shadow-lg transition-all duration-300 hover:scale-110">
-                <FiDollarSign className="text-4xl text-emerald-600" />              </div>
+              <div className="rounded-full bg-primary/10 p-4 hover:shadow-primary/20 hover:shadow-lg transition-all duration-300 hover:scale-110">
+                <FiDollarSign className="text-4xl text-primary" />              </div>
             </div>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-emerald-600 to-blue-600 text-transparent bg-clip-text transition-all duration-700 hover:scale-[1.02]">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text transition-all duration-700 hover:scale-[1.02]">
               Smart Personal Finance Tracker
             </h1>
-            <p className="text-xl md:text-2xl mb-10 text-slate-600 transition-all duration-700">
+            <p className="text-xl md:text-2xl mb-10 text-base-content opacity-80 transition-all duration-700">
               Take control of your finances with our intelligent tracking, 
               budgeting, and financial goal-setting platform.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/register">
-                <a className="btn bg-emerald-600 hover:bg-emerald-700 border-none text-white btn-lg hover:shadow-lg hover:scale-105 transition-all duration-300">
+                <a className="btn btn-primary text-white btn-lg hover:shadow-lg hover:scale-105 transition-all duration-300">
                   Get Started Free <FiArrowRight className="ml-2" />
                 </a>
               </Link>
               <Link href="/login">
-                <a className="btn btn-outline border-emerald-600 text-emerald-600 hover:bg-emerald-50 hover:border-emerald-700 hover:text-emerald-700 btn-lg hover:shadow-md transition-all duration-300">
+                <a className="btn btn-outline btn-primary btn-lg hover:shadow-md transition-all duration-300">
                   Sign In
                 </a>
               </Link>
             </div>            <div className="mt-12 flex flex-wrap justify-center gap-8">
               <div className="flex items-center">
-                <FiCheckCircle className="text-emerald-500 mr-2" />
-                <span className="text-slate-700">No credit card required</span>
+                <FiCheckCircle className="text-primary mr-2" />
+                <span className="text-base-content opacity-80">No credit card required</span>
               </div>
               <div className="flex items-center">
-                <FiCheckCircle className="text-emerald-500 mr-2" />
-                <span className="text-slate-700">Free forever plan</span>
+                <FiCheckCircle className="text-primary mr-2" />
+                <span className="text-base-content opacity-80">Free forever plan</span>
               </div>
               <div className="flex items-center">
-                <FiShield className="text-emerald-500 mr-2" />
-                <span className="text-slate-700">Bank-level security</span>
+                <FiShield className="text-primary mr-2" />
+                <span className="text-base-content opacity-80">Bank-level security</span>
               </div>
             </div>
           </div>
         </div>
       </div>      {/* Features Section */}
-      <div className="py-20 px-4 bg-white">
+      <div className="py-20 px-4 bg-base-100">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 text-slate-800">Powerful Features</h2>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text">Powerful Features</h2>
+            <p className="text-xl text-base-content opacity-80 max-w-2xl mx-auto">
               Everything you need to take control of your financial life in one beautiful, intuitive application.
             </p>
           </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <div key={index} className="card bg-white border border-slate-100 shadow-md hover:shadow-xl transition-all duration-300 rounded-xl overflow-hidden hover:-translate-y-2">
+              <div key={index} className="card bg-base-100 border border-base-300 shadow-md hover:shadow-xl transition-all duration-300 rounded-xl overflow-hidden hover:-translate-y-2">
                 <div className="card-body">
-                  <div className="p-4 rounded-full bg-slate-50 w-fit mb-4 group-hover:bg-slate-100 transition-all duration-300 hover:scale-110 hover:shadow-md">
+                  <div className="p-4 rounded-full bg-base-200 w-fit mb-4 group-hover:bg-base-300 transition-all duration-300 hover:scale-110 hover:shadow-md">
                     {feature.icon}
                   </div>
-                  <h3 className="card-title text-xl text-slate-800">{feature.title}</h3>
-                  <p className="text-slate-600">{feature.description}</p>
+                  <h3 className="card-title text-xl">{feature.title}</h3>
+                  <p className="text-base-content opacity-80">{feature.description}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </div>        {/* Testimonials */}
-      <div className="py-20 px-4 bg-slate-50 relative overflow-hidden">
+      <div className="py-20 px-4 bg-base-200 relative overflow-hidden">
         {/* Decorative background circles */}
-        <div className="absolute -top-20 right-0 w-64 h-64 bg-blue-100 rounded-full mix-blend-multiply filter blur-xl opacity-30"></div>
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-emerald-100 rounded-full mix-blend-multiply filter blur-xl opacity-30"></div>
+        <div className="absolute -top-20 right-0 w-64 h-64 bg-primary opacity-10 rounded-full mix-blend-multiply filter blur-xl"></div>
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary opacity-10 rounded-full mix-blend-multiply filter blur-xl"></div>
         
         <div className="container mx-auto relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 text-slate-800 bg-gradient-to-r from-emerald-600 to-blue-600 text-transparent bg-clip-text inline-block">What Our Users Say</h2>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text inline-block">What Our Users Say</h2>
+            <p className="text-xl text-base-content opacity-80 max-w-2xl mx-auto">
               Join thousands of users who have transformed their financial habits with our platform.
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">            {testimonials.map((testimonial, index) => (
-              <div key={index} className="card bg-white shadow-md hover:shadow-xl transition-all duration-300 rounded-xl overflow-hidden border border-slate-100 hover:-translate-y-2">
+              <div key={index} className="card bg-base-100 shadow-md hover:shadow-xl transition-all duration-300 rounded-xl overflow-hidden border border-base-300 hover:-translate-y-2">
                 <div className="card-body">
                   <div className="mb-4">
                     {[...Array(5)].map((_, i) => (
-                      <span key={i} className="text-amber-400 text-xl">★</span>
+                      <span key={i} className="text-warning text-xl">★</span>
                     ))}
                   </div>
-                  <p className="mb-6 italic text-slate-700">{testimonial.comment}</p>
+                  <p className="mb-6 italic text-base-content">{testimonial.comment}</p>
                   <div className="flex items-center">
                     <div className="avatar placeholder mr-4">
-                      <div className="bg-gradient-to-br from-emerald-500 to-blue-500 text-white rounded-full w-12 hover:shadow-lg transition-all duration-300 hover:scale-110">
+                      <div className="bg-gradient-to-br from-primary to-secondary text-white rounded-full w-12 hover:shadow-lg transition-all duration-300 hover:scale-110">
                         <span>{testimonial.name.charAt(0)}</span>
                       </div>
                     </div>
                     <div>
-                      <p className="font-bold text-slate-800">{testimonial.name}</p>
-                      <p className="text-sm text-slate-500">{testimonial.role}</p>
+                      <p className="font-bold">{testimonial.name}</p>
+                      <p className="text-sm opacity-70">{testimonial.role}</p>
                     </div>
                   </div>
                 </div>
@@ -218,16 +217,16 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </div>        {/* CTA Section */}
-      <div className="py-20 px-4 bg-gradient-to-r from-emerald-50 via-blue-50 to-indigo-50 relative overflow-hidden">
+      </div>      {/* CTA Section */}
+      <div className="py-20 px-4 bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5 relative overflow-hidden">
         {/* Decorative shapes */}
-        <div className="absolute top-10 left-10 w-20 h-20 bg-emerald-200 rounded-full mix-blend-multiply filter blur-lg opacity-50"></div>
-        <div className="absolute bottom-10 right-10 w-32 h-32 bg-blue-200 rounded-full mix-blend-multiply filter blur-lg opacity-50"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
+        <div className="absolute top-10 left-10 w-20 h-20 bg-primary/20 rounded-full mix-blend-multiply filter blur-lg"></div>
+        <div className="absolute bottom-10 right-10 w-32 h-32 bg-secondary/20 rounded-full mix-blend-multiply filter blur-lg"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accent/10 rounded-full mix-blend-multiply filter blur-3xl"></div>
         
         <div className="container mx-auto text-center max-w-3xl relative z-10">
-          <h2 className="text-4xl font-bold mb-6 text-slate-800 bg-gradient-to-r from-emerald-600 to-blue-600 text-transparent bg-clip-text inline-block">Ready to Transform Your Finances?</h2>
-          <p className="text-xl mb-10 text-slate-600">
+          <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text inline-block">Ready to Transform Your Finances?</h2>
+          <p className="text-xl mb-10 text-base-content opacity-80">
             Join thousands of users who have already taken control of their financial future with our smart tracking tools.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

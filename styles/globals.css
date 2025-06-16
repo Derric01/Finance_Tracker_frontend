@@ -8,6 +8,22 @@ html {
   font-family: 'Inter', sans-serif;
 }
 
+/* Improved theme transitions */
+html, body, * {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* Theme toggle animation */
+.btn-circle svg {
+  transition: transform 0.5s ease, color 0.3s ease;
+}
+
+.btn-circle:hover svg {
+  transform: rotate(15deg) scale(1.2);
+}
+
 /* Animation delay utilities */
 .animation-delay-200 {
   animation-delay: 0.2s;

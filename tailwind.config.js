@@ -38,8 +38,8 @@ module.exports = {
         },
       },
     },
-  },
-  plugins: [require("daisyui")],  daisyui: {
+  },  plugins: [require("daisyui")],
+  daisyui: {
     themes: [
       {
         financelight: {
@@ -71,5 +71,6 @@ module.exports = {
       }
     ],
     darkTheme: "financedark",
+    base: true,
   }
 }
