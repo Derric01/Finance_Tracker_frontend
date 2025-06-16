@@ -122,8 +122,8 @@ export default function Transactions() {
             </a>
           </Link>
         </div>
-      </div>{/* Summary Cards */}
-      <div className="stats stats-vertical sm:stats-horizontal shadow w-full mb-6 bg-gradient-to-r from-base-100 to-base-200 border border-base-300 animate-fadeIn animation-delay-200">
+      </div>      {/* Summary Cards */}
+      <div className="stats stats-vertical sm:stats-horizontal shadow w-full mb-6 bg-gradient-to-r from-base-100 to-base-200 border border-gray-100 animate-fadeIn animation-delay-200">
         <div className="stat">
           <div className="stat-figure text-primary">
             <div className="rounded-full bg-primary/10 p-3">
@@ -153,10 +153,9 @@ export default function Transactions() {
             </div>
           </div>
           <div className="stat-title font-medium">Expenses</div>
-          <div className="stat-value text-error">${totalExpense.toFixed(2)}</div>
-        </div>
+          <div className="stat-value text-error">${totalExpense.toFixed(2)}</div>        </div>
       </div>      {/* Filters */}
-      <div className="card bg-base-100 shadow-md mb-6 border border-base-300 hover:shadow-lg transition-all duration-300 animate-fadeIn animation-delay-300">
+      <div className="card bg-base-100 shadow-md mb-6 border border-gray-100 hover:shadow-lg transition-all duration-300 animate-fadeIn animation-delay-300">
         <div className="card-body">          <h2 className="card-title text-xl font-bold bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent flex items-center">
             <FiFilter className="mr-2 text-secondary" /> Filters
           </h2>
@@ -222,7 +221,7 @@ export default function Transactions() {
           </div>
         </div>
       </div>      {/* Transactions List */}
-      <div className="card bg-base-100 shadow-xl border border-base-300 hover:shadow-2xl transition-all duration-300 animate-fadeIn animation-delay-400">
+      <div className="card bg-base-100 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300 animate-fadeIn animation-delay-400">
         <div className="card-body">
           <h2 className="card-title mb-4 text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Transaction History</h2>
           
