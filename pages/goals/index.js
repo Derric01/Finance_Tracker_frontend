@@ -169,23 +169,20 @@ export default function Goals() {
     ? Math.round((totalSavedAmount / totalTargetAmount) * 100) 
     : 0;
 
-  return (
-    <Layout>
+  return (    <Layout>
       <div className="container mx-auto px-4 py-8">
-        <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-bold flex items-center">
-            <FiTarget className="mr-2" /> Financial Goals
+        <div className="flex justify-between items-center mb-6 animate-fadeIn">
+          <h1 className="text-2xl font-bold flex items-center bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            <FiTarget className="mr-2 text-primary" /> Financial Goals
           </h1>
           <button 
-            className="btn btn-primary btn-sm flex items-center gap-2"
+            className="btn btn-primary btn-sm flex items-center gap-2 shadow-md hover:shadow-lg transition-shadow"
             onClick={() => setIsAddingGoal(true)}
           >
             <FiPlus /> Add Goal
           </button>
-        </div>
-
-        {error && (
-          <div className="alert alert-warning mb-6">
+        </div>        {error && (
+          <div className="alert alert-warning mb-6 shadow-md animate-fadeIn">
             <div className="flex-1">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mx-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
@@ -193,47 +190,43 @@ export default function Goals() {
               <span>{error}</span>
             </div>
           </div>
-        )}
-
-        <div className="stats shadow w-full mb-8">
+        )}        <div className="stats shadow w-full mb-8 bg-gradient-to-r from-base-100 to-base-200 border border-gray-100 animate-fadeIn animation-delay-200">
           <div className="stat">
-            <div className="stat-title">Total Goals</div>
-            <div className="stat-value">{goals.length}</div>
+            <div className="stat-title font-medium">Total Goals</div>
+            <div className="stat-value text-primary">{goals.length}</div>
             <div className="stat-desc">Active financial goals</div>
           </div>
           <div className="stat">
-            <div className="stat-title">Total Target</div>
-            <div className="stat-value">${totalTargetAmount.toLocaleString()}</div>
+            <div className="stat-title font-medium">Total Target</div>
+            <div className="stat-value text-secondary">${totalTargetAmount.toLocaleString()}</div>
             <div className="stat-desc">Combined goal amount</div>
           </div>
           <div className="stat">
-            <div className="stat-title">Saved So Far</div>
-            <div className="stat-value">${totalSavedAmount.toLocaleString()}</div>
+            <div className="stat-title font-medium">Saved So Far</div>
+            <div className="stat-value text-accent">${totalSavedAmount.toLocaleString()}</div>
             <div className="stat-desc text-success">{progressPercentage}% of target</div>
           </div>
-        </div>
-
-        {loading && goals.length === 0 ? (
-          <div className="flex justify-center my-8">
-            <div className="loader">Loading...</div>
+        </div>        {loading && goals.length === 0 ? (
+          <div className="flex justify-center my-8 animate-fadeIn animation-delay-300">
+            <span className="loading loading-spinner loading-lg text-primary"></span>
           </div>
         ) : goals.length === 0 ? (
-          <div className="text-center py-8">
+          <div className="text-center py-8 animate-fadeIn animation-delay-300">
             <p className="text-lg mb-4">You don't have any financial goals yet.</p>
             <button 
-              className="btn btn-primary"
+              className="btn btn-primary shadow-md hover:shadow-lg transition-shadow gap-2"
               onClick={() => setIsAddingGoal(true)}
             >
-              <FiPlus className="mr-2" /> Create Your First Goal
+              <FiPlus /> Create Your First Goal
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fadeIn animation-delay-300">
             {goals.map((goal) => (
-              <div key={goal._id} className="card bg-base-100 shadow-xl">
+              <div key={goal._id} className="card bg-base-100 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300 hover:translate-y-[-5px]">
                 <div className="card-body">
                   <div className="flex justify-between items-start">
-                    <h2 className="card-title">{goal.name}</h2>
+                    <h2 className="card-title text-secondary-content">{goal.name || goal.title}</h2>
                     <div className={`badge ${
                       goal.priority === 'High' ? 'badge-error' : 
                       goal.priority === 'Medium' ? 'badge-warning' : 'badge-info'
@@ -244,18 +237,18 @@ export default function Goals() {
                   
                   <div className="grid grid-cols-2 gap-2 my-2 text-sm">
                     <div className="flex flex-col">
-                      <span className="text-gray-500">Target</span>
+                      <span className="text-gray-500 font-medium">Target</span>
                       <span className="font-semibold">${goal.targetAmount.toLocaleString()}</span>
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-gray-500">Deadline</span>
+                      <span className="text-gray-500 font-medium">Deadline</span>
                       <span className="font-semibold">{new Date(goal.deadline).toLocaleDateString()}</span>
                     </div>
                   </div>
                   
                   <div className="mt-4">
                     <div className="flex justify-between text-sm mb-1">
-                      <span>Progress</span>
+                      <span className="font-medium">Progress</span>
                       <span>${goal.currentAmount.toLocaleString()} / ${goal.targetAmount.toLocaleString()}</span>
                     </div>
                     <progress 
@@ -270,16 +263,16 @@ export default function Goals() {
                   
                   <div className="card-actions justify-end mt-4">
                     <button 
-                      className="btn btn-outline btn-sm"
+                      className="btn btn-outline btn-sm gap-1 hover:bg-success/10 hover:border-success hover:text-success transition-colors"
                       onClick={() => handleAddFunds(goal)}
                     >
-                      <FiCheck className="mr-1" /> Add Funds
+                      <FiCheck /> Add Funds
                     </button>
-                    <button className="btn btn-outline btn-sm btn-square">
+                    <button className="btn btn-outline btn-sm btn-square hover:bg-secondary/10 hover:border-secondary hover:text-secondary transition-colors">
                       <FiEdit2 />
                     </button>
                     <button 
-                      className="btn btn-outline btn-sm btn-square btn-error"
+                      className="btn btn-outline btn-sm btn-square btn-error hover:bg-error/10 transition-colors"
                       onClick={() => handleDeleteGoal(goal._id)}
                     >
                       <FiTrash2 />
@@ -290,37 +283,34 @@ export default function Goals() {
             ))}
           </div>
         )}
-        
-        <div className="alert alert-info shadow-lg mt-8">
+          <div className="alert alert-info shadow-lg mt-8 bg-gradient-to-r from-info/20 to-info/10 border-info/20 animate-fadeIn animation-delay-500">
           <div>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-current flex-shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
             <div>
-              <h3 className="font-bold">Goal Setting Tip</h3>
+              <h3 className="font-bold text-secondary-content">Goal Setting Tip</h3>
               <div className="text-sm">Make your financial goals SMART: Specific, Measurable, Achievable, Relevant, and Time-bound.</div>
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Add Goal Modal */}
+      </div>      {/* Add Goal Modal */}
       {isAddingGoal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center">
-          <div className="modal-box relative">
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center animate-fadeIn">
+          <div className="modal-box relative bg-base-100 border border-gray-100 shadow-2xl">
             <button 
-              className="btn btn-sm btn-circle absolute right-2 top-2"
+              className="btn btn-sm btn-circle absolute right-2 top-2 hover:bg-error/10 hover:text-error border-none"
               onClick={() => setIsAddingGoal(false)}
             >
               <FiX />
             </button>
-            <h3 className="text-lg font-bold mb-4">Create New Financial Goal</h3>
+            <h3 className="text-lg font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Create New Financial Goal</h3>
               <form onSubmit={handleAddGoal}>
               <div className="form-control mb-4">
                 <label className="label">
-                  <span className="label-text">Goal Title</span>
+                  <span className="label-text font-medium">Goal Title</span>
                 </label>
                 <input 
                   type="text" 
-                  className="input input-bordered w-full" 
+                  className="input input-bordered w-full focus:border-primary" 
                   placeholder="e.g., Emergency Fund, New Car"
                   value={newGoal.title}
                   onChange={(e) => setNewGoal({...newGoal, title: e.target.value})}
@@ -330,10 +320,10 @@ export default function Goals() {
               
               <div className="form-control mb-4">
                 <label className="label">
-                  <span className="label-text">Description (Optional)</span>
+                  <span className="label-text font-medium">Description (Optional)</span>
                 </label>
                 <textarea
-                  className="textarea textarea-bordered w-full" 
+                  className="textarea textarea-bordered w-full focus:border-primary" 
                   placeholder="Add more details about your goal"
                   value={newGoal.description}
                   onChange={(e) => setNewGoal({...newGoal, description: e.target.value})}
@@ -343,13 +333,13 @@ export default function Goals() {
               
               <div className="form-control mb-4">
                 <label className="label">
-                  <span className="label-text">Target Amount</span>
+                  <span className="label-text font-medium">Target Amount</span>
                 </label>
                 <div className="input-group">
-                  <span>$</span>
+                  <span className="bg-base-200">$</span>
                   <input 
                     type="number" 
-                    className="input input-bordered w-full" 
+                    className="input input-bordered w-full focus:border-primary" 
                     placeholder="0.00"
                     step="0.01"
                     min="0"
@@ -362,13 +352,13 @@ export default function Goals() {
               
               <div className="form-control mb-4">
                 <label className="label">
-                  <span className="label-text">Initial Amount (optional)</span>
+                  <span className="label-text font-medium">Initial Amount (optional)</span>
                 </label>
                 <div className="input-group">
-                  <span>$</span>
+                  <span className="bg-base-200">$</span>
                   <input 
                     type="number" 
-                    className="input input-bordered w-full" 
+                    className="input input-bordered w-full focus:border-primary" 
                     placeholder="0.00"
                     step="0.01"
                     min="0"
@@ -380,10 +370,10 @@ export default function Goals() {
               
               <div className="form-control mb-4">
                 <label className="label">
-                  <span className="label-text">Currency</span>
+                  <span className="label-text font-medium">Currency</span>
                 </label>
                 <select 
-                  className="select select-bordered w-full" 
+                  className="select select-bordered w-full focus:border-primary" 
                   value={newGoal.currency}
                   onChange={(e) => setNewGoal({...newGoal, currency: e.target.value})}
                   required
@@ -396,11 +386,11 @@ export default function Goals() {
               
               <div className="form-control mb-4">
                 <label className="label">
-                  <span className="label-text flex items-center"><FiCalendar className="mr-2" /> Target Date</span>
+                  <span className="label-text flex items-center font-medium"><FiCalendar className="mr-2 text-primary" /> Target Date</span>
                 </label>
                 <input 
                   type="date" 
-                  className="input input-bordered w-full" 
+                  className="input input-bordered w-full focus:border-primary" 
                   value={newGoal.deadline}
                   onChange={(e) => setNewGoal({...newGoal, deadline: e.target.value})}
                   required
@@ -409,10 +399,10 @@ export default function Goals() {
               
               <div className="form-control mb-6">
                 <label className="label">
-                  <span className="label-text">Priority</span>
+                  <span className="label-text font-medium">Priority</span>
                 </label>
                 <select 
-                  className="select select-bordered w-full" 
+                  className="select select-bordered w-full focus:border-primary" 
                   value={newGoal.priority}
                   onChange={(e) => setNewGoal({...newGoal, priority: e.target.value})}
                   required
@@ -426,17 +416,17 @@ export default function Goals() {
               <div className="flex justify-end space-x-2">
                 <button 
                   type="button" 
-                  className="btn btn-ghost"
+                  className="btn btn-ghost hover:bg-base-200"
                   onClick={() => setIsAddingGoal(false)}
                 >
                   Cancel
                 </button>
                 <button 
                   type="submit" 
-                  className="btn btn-primary"
+                  className="btn btn-primary shadow-md hover:shadow-lg transition-shadow gap-2"
                   disabled={loading}
                 >
-                  <FiCheck className="mr-2" /> Create Goal
+                  <FiCheck /> Create Goal
                 </button>
               </div>
             </form>

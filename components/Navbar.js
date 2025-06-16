@@ -7,11 +7,11 @@ import {
   FiBell, FiUser, FiSettings, FiLogOut, FiMenu, FiX, FiMoon, FiSun
 } from 'react-icons/fi';
 
-export default function Navbar() {
+export default function Navbar({ updateTheme, currentTheme }) {
   const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const [userData, setUserData] = useState(null);
+  const isDarkMode = currentTheme === 'financedark';
 
   useEffect(() => {
     // Get user data when component mounts
@@ -24,9 +24,8 @@ export default function Navbar() {
   };
 
   const toggleTheme = () => {
-    const newTheme = !isDarkMode;
-    setIsDarkMode(newTheme);
-    document.querySelector('div[data-theme]').dataset.theme = newTheme ? 'financedark' : 'financelight';
+    const newTheme = isDarkMode ? 'financelight' : 'financedark';
+    updateTheme(newTheme);
   };
 
   const handleLogout = () => {
@@ -42,16 +41,14 @@ export default function Navbar() {
       .join('')
       .toUpperCase()
       .substring(0, 2);
-  };
-
-  return (
+  };  return (
     <div className="navbar bg-base-100 shadow-md sticky top-0 z-50">
       <div className="container mx-auto">
         <div className="flex-1">
           <Link href="/dashboard">
             <a className="btn btn-ghost normal-case text-xl flex items-center">
               <FiDollarSign className="text-primary mr-2" />
-              <span className="font-bold">Financer</span>
+              <span className="font-bold bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text">Financer</span>
             </a>
           </Link>
         </div>
@@ -61,7 +58,7 @@ export default function Navbar() {
           <ul className="menu menu-horizontal px-1 gap-1">
             <li>
               <Link href="/dashboard">
-                <a className={router.pathname === '/dashboard' ? 'active' : ''}>
+                <a className={`hover:text-primary transition-all duration-300 ${router.pathname === '/dashboard' ? 'text-primary font-medium' : ''}`}>
                   <FiHome />
                   Dashboard
                 </a>
@@ -69,7 +66,7 @@ export default function Navbar() {
             </li>
             <li>
               <Link href="/transactions">
-                <a className={router.pathname.startsWith('/transactions') ? 'active' : ''}>
+                <a className={`hover:text-primary transition-all duration-300 ${router.pathname.startsWith('/transactions') ? 'text-primary font-medium' : ''}`}>
                   <FiDollarSign />
                   Transactions
                 </a>
@@ -77,7 +74,7 @@ export default function Navbar() {
             </li>
             <li>
               <Link href="/budgets">
-                <a className={router.pathname.startsWith('/budgets') ? 'active' : ''}>
+                <a className={`hover:text-primary transition-all duration-300 ${router.pathname.startsWith('/budgets') ? 'text-primary font-medium' : ''}`}>
                   <FiPieChart />
                   Budgets
                 </a>
@@ -85,7 +82,7 @@ export default function Navbar() {
             </li>
             <li>
               <Link href="/goals">
-                <a className={router.pathname.startsWith('/goals') ? 'active' : ''}>
+                <a className={`hover:text-primary transition-all duration-300 ${router.pathname.startsWith('/goals') ? 'text-primary font-medium' : ''}`}>
                   <FiTarget />
                   Goals
                 </a>
@@ -95,11 +92,10 @@ export default function Navbar() {
           
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar placeholder">
-              <div className="bg-primary text-neutral-content rounded-full w-10">
+              <div className="bg-gradient-to-br from-primary to-secondary text-white rounded-full w-10 hover:shadow-lg transition-all duration-300">
                 <span>{getUserInitials()}</span>
               </div>
-            </label>
-            <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
+            </label>            <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
               <li className="menu-title">
                 <span>{userData?.name || 'User'}</span>
               </li>
@@ -138,7 +134,7 @@ export default function Navbar() {
         {/* Mobile Navigation */}
         <div className="flex-none md:hidden">
           <button className="btn btn-ghost btn-circle" onClick={toggleTheme}>
-            {isDarkMode ? <FiSun /> : <FiMoon />}
+            {isDarkMode ? <FiSun className="text-warning" /> : <FiMoon className="text-primary" />}
           </button>
           
           <button className="btn btn-ghost btn-circle" onClick={toggleMenu}>
@@ -156,7 +152,7 @@ export default function Navbar() {
             </li>
             <li>
               <Link href="/dashboard">
-                <a className={router.pathname === '/dashboard' ? 'active' : ''}>
+                <a className={router.pathname === '/dashboard' ? 'active font-medium text-primary' : ''}>
                   <FiHome />
                   Dashboard
                 </a>
@@ -164,7 +160,7 @@ export default function Navbar() {
             </li>
             <li>
               <Link href="/transactions">
-                <a className={router.pathname.startsWith('/transactions') ? 'active' : ''}>
+                <a className={router.pathname.startsWith('/transactions') ? 'active font-medium text-primary' : ''}>
                   <FiDollarSign />
                   Transactions
                 </a>
@@ -172,7 +168,7 @@ export default function Navbar() {
             </li>
             <li>
               <Link href="/budgets">
-                <a className={router.pathname.startsWith('/budgets') ? 'active' : ''}>
+                <a className={router.pathname.startsWith('/budgets') ? 'active font-medium text-primary' : ''}>
                   <FiPieChart />
                   Budgets
                 </a>
@@ -180,7 +176,7 @@ export default function Navbar() {
             </li>
             <li>
               <Link href="/goals">
-                <a className={router.pathname.startsWith('/goals') ? 'active' : ''}>
+                <a className={router.pathname.startsWith('/goals') ? 'active font-medium text-primary' : ''}>
                   <FiTarget />
                   Goals
                 </a>
@@ -197,14 +193,13 @@ export default function Navbar() {
             </li>
             <li>
               <Link href="/settings">
-                <a>
-                  <FiSettings />
+                <a>                  <FiSettings />
                   Settings
                 </a>
               </Link>
             </li>
             <li>
-              <button onClick={handleLogout}>
+              <button onClick={handleLogout} className="text-error">
                 <FiLogOut />
                 Logout
               </button>

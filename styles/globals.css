@@ -4,42 +4,55 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-@layer base {
-  html {
-    @apply font-sans;
-  }
+html {
+  font-family: 'Inter', sans-serif;
 }
 
-@layer components {
-  .card-hover {
-    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
-  }
-  
-  .btn-gradient {
-    @apply bg-gradient-to-r from-primary to-secondary text-white hover:from-primary/90 hover:to-secondary/90;
-  }
-  
-  .stat-card {
-    @apply bg-base-100 rounded-xl shadow-md p-5 flex flex-col space-y-2;
-  }
-  
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
-  }
-
-  .glassmorphism {
-    @apply bg-white/30 backdrop-blur-lg rounded-xl border border-white/20 shadow-lg;
-  }
+/* Animation delay utilities */
+.animation-delay-200 {
+  animation-delay: 0.2s;
 }
 
-@keyframes float {
+.animation-delay-300 {
+  animation-delay: 0.3s;
+}
+
+.animation-delay-400 {
+  animation-delay: 0.4s;
+}
+
+.animation-delay-500 {
+  animation-delay: 0.5s;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Animation keyframes for fadeIn */
+@keyframes fadeIn {
   0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+/* Float animation */
+@keyframes float {
+  0%, 100% {
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0px);
+    transform: translateY(-20px);
   }
 }

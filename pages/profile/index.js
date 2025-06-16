@@ -96,43 +96,40 @@ export default function Profile() {
       setLoading(false);
     }
   };
-
   return (
     <Layout>
       <div className="container mx-auto px-4 py-8">
-        <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-bold flex items-center">
-            <FiUser className="mr-2" /> Profile
+        <div className="flex justify-between items-center mb-6 animate-fadeIn">
+          <h1 className="text-2xl font-bold flex items-center bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            <FiUser className="mr-2 text-primary" /> Profile
           </h1>
           <button 
-            className="btn btn-primary btn-sm"
+            className="btn btn-primary btn-sm shadow-md hover:shadow-lg transition-shadow gap-2"
             onClick={() => isEditing ? handleSaveProfile() : setIsEditing(true)}
             disabled={loading}
           >
-            {loading ? 'Saving...' : isEditing ? <><FiSave className="mr-2" /> Save</> : <><FiEdit className="mr-2" /> Edit</>}
+            {loading ? 'Saving...' : isEditing ? <><FiSave /> Save</> : <><FiEdit /> Edit</>}
           </button>
         </div>
 
-        {error && <div className="alert alert-error mb-4">{error}</div>}
-
-        <div className="flex flex-col md:flex-row gap-8">
+        {error && <div className="alert alert-error mb-4 shadow-md">{error}</div>}        <div className="flex flex-col md:flex-row gap-8 animate-fadeIn animation-delay-200">
           <div className="md:w-1/3">
-            <div className="card bg-base-100 shadow-xl">
+            <div className="card bg-base-100 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300">
               <div className="card-body items-center text-center">
                 <div className="avatar placeholder">
-                  <div className="bg-neutral-focus text-neutral-content rounded-full w-24">
+                  <div className="bg-gradient-to-br from-primary to-secondary text-white rounded-full w-24">
                     <span className="text-3xl">{profile.name.split(' ').map(n => n[0]).join('')}</span>
                   </div>
                 </div>
-                <h2 className="card-title mt-4">{profile.name}</h2>
+                <h2 className="card-title mt-4 text-secondary-content">{profile.name}</h2>
                 <p className="text-sm text-gray-500">Member since {new Date(profile.accountCreated).toLocaleDateString()}</p>
                 
                 {isEditing && (
                   <div className="form-control w-full mt-4">
                     <label className="label">
-                      <span className="label-text">Change Profile Picture</span>
+                      <span className="label-text font-medium">Change Profile Picture</span>
                     </label>
-                    <input type="file" className="file-input file-input-bordered w-full" />
+                    <input type="file" className="file-input file-input-bordered w-full focus:border-primary" />
                   </div>
                 )}
               </div>

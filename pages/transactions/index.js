@@ -108,31 +108,30 @@ export default function Transactions() {
   
   const balance = totalIncome - totalExpense;
 
-  return (
-    <Layout>
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold">Transactions</h1>
+  return (    <Layout>
+      <div className="flex justify-between items-center mb-6 animate-fadeIn">
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Transactions</h1>
         <div className="flex space-x-2">
           <Link href="/dashboard">
-            <a className="btn btn-ghost">
+            <a className="btn btn-ghost hover:bg-base-200 transition-colors">
               <FiArrowLeft className="mr-2" /> Dashboard
             </a>
           </Link>
           <Link href="/transactions/add">
-            <a className="btn btn-primary">
-              <FiPlusCircle className="mr-2" /> New Transaction
+            <a className="btn btn-primary shadow-md hover:shadow-lg transition-shadow gap-2">
+              <FiPlusCircle /> New Transaction
             </a>
           </Link>
         </div>
-      </div>
-
-      {/* Summary Cards */}
-      <div className="stats shadow w-full mb-6">
+      </div>      {/* Summary Cards */}
+      <div className="stats shadow w-full mb-6 bg-gradient-to-r from-base-100 to-base-200 border border-gray-100 animate-fadeIn animation-delay-200">
         <div className="stat">
           <div className="stat-figure text-primary">
-            <FiDollarSign className="text-3xl" />
+            <div className="rounded-full bg-primary/10 p-3">
+              <FiDollarSign className="text-2xl text-primary" />
+            </div>
           </div>
-          <div className="stat-title">Balance</div>
+          <div className="stat-title font-medium">Balance</div>
           <div className={`stat-value ${balance >= 0 ? 'text-success' : 'text-error'}`}>
             ${balance.toFixed(2)}
           </div>
@@ -140,34 +139,37 @@ export default function Transactions() {
         
         <div className="stat">
           <div className="stat-figure text-success">
-            <FiArrowUp className="text-3xl" />
+            <div className="rounded-full bg-success/10 p-3">
+              <FiArrowUp className="text-2xl text-success" />
+            </div>
           </div>
-          <div className="stat-title">Income</div>
+          <div className="stat-title font-medium">Income</div>
           <div className="stat-value text-success">${totalIncome.toFixed(2)}</div>
         </div>
         
         <div className="stat">
           <div className="stat-figure text-error">
-            <FiArrowDown className="text-3xl" />
+            <div className="rounded-full bg-error/10 p-3">
+              <FiArrowDown className="text-2xl text-error" />
+            </div>
           </div>
-          <div className="stat-title">Expenses</div>
+          <div className="stat-title font-medium">Expenses</div>
           <div className="stat-value text-error">${totalExpense.toFixed(2)}</div>
         </div>
       </div>
-      
-      {/* Filters */}
-      <div className="card bg-base-100 shadow-md mb-6">
+        {/* Filters */}
+      <div className="card bg-base-100 shadow-md mb-6 border border-gray-100 hover:shadow-lg transition-all duration-300 animate-fadeIn animation-delay-300">
         <div className="card-body">
-          <h2 className="card-title">
-            <FiFilter className="mr-2" /> Filters
+          <h2 className="card-title text-xl font-bold bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent flex items-center">
+            <FiFilter className="mr-2 text-secondary" /> Filters
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-2">
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Transaction Type</span>
+                <span className="label-text font-medium">Transaction Type</span>
               </label>
               <select 
-                className="select select-bordered w-full" 
+                className="select select-bordered w-full focus:border-primary" 
                 value={filter.type}
                 onChange={(e) => setFilter({...filter, type: e.target.value})}
               >
@@ -179,10 +181,10 @@ export default function Transactions() {
             
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Category</span>
+                <span className="label-text font-medium">Category</span>
               </label>
               <select 
-                className="select select-bordered w-full" 
+                className="select select-bordered w-full focus:border-primary" 
                 value={filter.category}
                 onChange={(e) => setFilter({...filter, category: e.target.value.toLowerCase()})}
               >
@@ -196,10 +198,9 @@ export default function Transactions() {
             
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Sort By</span>
-              </label>
-              <select 
-                className="select select-bordered w-full" 
+                <span className="label-text font-medium">Sort By</span>
+              </label>              <select 
+                className="select select-bordered w-full focus:border-primary" 
                 value={filter.sortBy}
                 onChange={(e) => setFilter({...filter, sortBy: e.target.value})}
               >
@@ -210,10 +211,10 @@ export default function Transactions() {
             
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Sort Order</span>
+                <span className="label-text font-medium">Sort Order</span>
               </label>
               <select 
-                className="select select-bordered w-full" 
+                className="select select-bordered w-full focus:border-primary" 
                 value={filter.sortOrder}
                 onChange={(e) => setFilter({...filter, sortOrder: e.target.value})}
               >
@@ -224,14 +225,13 @@ export default function Transactions() {
           </div>
         </div>
       </div>
-      
-      {/* Transactions List */}
-      <div className="card bg-base-100 shadow-xl">
+        {/* Transactions List */}
+      <div className="card bg-base-100 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300 animate-fadeIn animation-delay-400">
         <div className="card-body">
-          <h2 className="card-title mb-4">Transaction History</h2>
+          <h2 className="card-title mb-4 text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Transaction History</h2>
           
           {error && (
-            <div className="alert alert-warning mb-4">
+            <div className="alert alert-warning mb-4 shadow-md">
               <div className="flex-1">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mx-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
@@ -243,14 +243,14 @@ export default function Transactions() {
           
           {loading ? (
             <div className="flex justify-center my-8">
-              <div className="loader">Loading...</div>
+              <span className="loading loading-spinner loading-lg text-primary"></span>
             </div>
           ) : filteredTransactions.length === 0 ? (
             <div className="text-center py-8">
               <p className="text-lg mb-4">No transactions found.</p>
               <Link href="/transactions/add">
-                <a className="btn btn-primary">
-                  <FiPlusCircle className="mr-2" /> Add Your First Transaction
+                <a className="btn btn-primary shadow-md hover:shadow-lg transition-shadow gap-2">
+                  <FiPlusCircle /> Add Your First Transaction
                 </a>
               </Link>
             </div>
@@ -259,19 +259,19 @@ export default function Transactions() {
               <table className="table w-full">
                 <thead>
                   <tr>
-                    <th>Date</th>
-                    <th>Description</th>
-                    <th>Category</th>
-                    <th>Amount</th>
-                    <th>Actions</th>
+                    <th className="bg-base-200/50">Date</th>
+                    <th className="bg-base-200/50">Description</th>
+                    <th className="bg-base-200/50">Category</th>
+                    <th className="bg-base-200/50">Amount</th>
+                    <th className="bg-base-200/50">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {filteredTransactions.map(transaction => (                    <tr key={transaction._id} className="hover">
+                  {filteredTransactions.map(transaction => (                    <tr key={transaction._id} className="hover:bg-base-200/30 transition-colors">
                       <td>
                         <div className="flex items-center space-x-3">
                           <div className="avatar placeholder">
-                            <div className={`bg-${transaction.type === 'income' ? 'success' : 'error'} text-white rounded-full w-12`}>
+                            <div className={`bg-${transaction.type === 'income' ? 'success' : 'error'}/10 text-${transaction.type === 'income' ? 'success' : 'error'} rounded-full w-12 flex items-center justify-center`}>
                               <span className="text-xl">{transaction.type === 'income' ? '+' : '-'}</span>
                             </div>
                           </div>
@@ -283,18 +283,21 @@ export default function Transactions() {
                         </div>
                       </td>
                       <td>{transaction.notes}</td>
-                      <td>{transaction.category}</td>                      <td className={transaction.type === 'income' ? 'text-success font-bold' : 'text-error font-bold'}>
+                      <td>
+                        <div className="badge badge-outline badge-sm">{transaction.category}</div>
+                      </td>                      
+                      <td className={transaction.type === 'income' ? 'text-success font-bold' : 'text-error font-bold'}>
                         {formatCurrency(transaction.amount, transaction.currency)}
                       </td>
                       <td>
                         <div className="flex space-x-2">
                           <Link href={`/transactions/edit/${transaction._id}`}>
-                            <a className="btn btn-ghost btn-xs">
+                            <a className="btn btn-ghost btn-xs hover:bg-base-200">
                               <FiEdit />
                             </a>
                           </Link>
                           <button 
-                            className="btn btn-ghost btn-xs text-error"
+                            className="btn btn-ghost btn-xs text-error hover:bg-error/10"
                             onClick={() => handleDelete(transaction._id)}
                           >
                             <FiTrash2 />

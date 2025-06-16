@@ -204,70 +204,74 @@ export default function Dashboard() {
   };
   
   return (
-    <Layout>
-      <div className="container mx-auto px-4 py-8">
+    <Layout>      <div className="container mx-auto px-4 py-8">
         {/* Greeting section */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold">
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent animate-fadeIn">
             Welcome, {userData?.name || 'User'}!
           </h1>
-          <p className="text-gray-600 mt-1">
+          <p className="text-gray-600 mt-1 animate-fadeIn animation-delay-200">
             Here's an overview of your finances
           </p>
-        </div>
-
-        {/* Quick Actions */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        </div>        {/* Quick Actions */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 animate-fadeIn animation-delay-300">
           <Link href="/transactions/add">
-            <a className="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
+            <a className="card bg-base-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:translate-y-[-5px] border border-gray-100">
               <div className="card-body items-center text-center p-4">
-                <FiDollarSign className="text-2xl text-primary mb-2" />
+                <div className="rounded-full bg-primary/10 p-3 mb-2">
+                  <FiDollarSign className="text-2xl text-primary" />
+                </div>
                 <h3 className="card-title text-sm">Add Transaction</h3>
               </div>
             </a>
           </Link>
           <Link href="/budgets">
-            <a className="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
+            <a className="card bg-base-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:translate-y-[-5px] border border-gray-100">
               <div className="card-body items-center text-center p-4">
-                <FiPieChart className="text-2xl text-secondary mb-2" />
+                <div className="rounded-full bg-secondary/10 p-3 mb-2">
+                  <FiPieChart className="text-2xl text-secondary" />
+                </div>
                 <h3 className="card-title text-sm">Manage Budgets</h3>
               </div>
             </a>
           </Link>
           <Link href="/goals">
-            <a className="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
+            <a className="card bg-base-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:translate-y-[-5px] border border-gray-100">
               <div className="card-body items-center text-center p-4">
-                <FiTarget className="text-2xl text-accent mb-2" />
+                <div className="rounded-full bg-accent/10 p-3 mb-2">
+                  <FiTarget className="text-2xl text-accent" />
+                </div>
                 <h3 className="card-title text-sm">View Goals</h3>
               </div>
             </a>
           </Link>
           <Link href="/transactions">
-            <a className="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
+            <a className="card bg-base-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:translate-y-[-5px] border border-gray-100">
               <div className="card-body items-center text-center p-4">
-                <FiActivity className="text-2xl text-info mb-2" />
+                <div className="rounded-full bg-info/10 p-3 mb-2">
+                  <FiActivity className="text-2xl text-info" />
+                </div>
                 <h3 className="card-title text-sm">All Transactions</h3>
               </div>
             </a>
           </Link>
         </div>
 
-        {/* Main Dashboard Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Main Dashboard Content */}        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 animate-fadeIn animation-delay-500">
           {/* Left Column - Financial Summary */}
           <div className="lg:col-span-2 space-y-8">
             {/* Financial Summary */}
-            <div className="card bg-base-100 shadow-xl">
+            <div className="card bg-base-100 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300">
               <div className="card-body">
                 <div className="flex justify-between items-center mb-4">
-                  <h2 className="card-title">Financial Summary</h2>                  <CurrencySwitcher 
+                  <h2 className="card-title font-bold text-xl bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Financial Summary</h2>                  <CurrencySwitcher 
                     initialCurrency={currency}
                     onChange={setCurrency}
                   />
                 </div>
                 
-                <div className="stats stats-vertical lg:stats-horizontal shadow w-full">
-                  <div className="stat">                    <div className="stat-title">Budget</div>
+                <div className="stats stats-vertical lg:stats-horizontal shadow w-full bg-gradient-to-r from-base-100 to-base-200">
+                  <div className="stat">                    <div className="stat-title font-medium">Budget</div>
                     <div className="stat-value text-primary">
                       {formatCurrency(budgetSummary.total, currency)}
                     </div>
@@ -285,7 +289,7 @@ export default function Dashboard() {
                   </div>
                   
                   <div className="stat">
-                    <div className="stat-title">Goals</div>
+                    <div className="stat-title font-medium">Goals</div>
                     <div className="stat-value text-secondary">{goalsSummary.count}</div>
                     <div className="stat-desc">
                       {goalsError ? (
@@ -299,9 +303,8 @@ export default function Dashboard() {
                       )}
                     </div>
                   </div>
-                  
-                  <div className="stat">
-                    <div className="stat-title">Savings</div>
+                    <div className="stat">
+                    <div className="stat-title font-medium">Savings</div>
                     <div className="stat-value text-accent">
                       ${(budgetSummary.total - budgetSummary.spent).toFixed(0)}
                     </div>
@@ -309,36 +312,33 @@ export default function Dashboard() {
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* Recent Transactions */}
-            <div className="card bg-base-100 shadow-xl">
+            </div>            {/* Recent Transactions */}
+            <div className="card bg-base-100 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300">
               <div className="card-body">
                 <div className="flex justify-between items-center mb-4">
-                  <h2 className="card-title">Recent Transactions</h2>
+                  <h2 className="card-title font-bold text-xl bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">Recent Transactions</h2>
                   <Link href="/transactions">
-                    <a className="btn btn-sm btn-ghost">
-                      View All <FiArrowRight className="ml-1" />
+                    <a className="btn btn-sm btn-ghost hover:bg-base-200 gap-2 group">
+                      View All <FiArrowRight className="ml-1 group-hover:translate-x-1 transition-transform" />
                     </a>
                   </Link>
                 </div>
                 
                 {transactionsError ? (
-                  <div className="alert alert-error">
+                  <div className="alert alert-error shadow-lg">
                     <FiAlertTriangle className="mr-2" />
                     {transactionsError}
                   </div>
                 ) : transactionsLoading ? (
                   <div className="flex justify-center py-8">
-                    <span className="loading loading-spinner loading-lg"></span>
+                    <span className="loading loading-spinner loading-lg text-primary"></span>
                   </div>
                 ) : recentTransactions.length === 0 ? (
                   <div className="text-center py-8">
-                    <p className="text-gray-500">No transactions yet</p>
+                    <p className="text-gray-500 mb-4">No transactions yet</p>
                     <Link href="/transactions/add">
-                      <a className="btn btn-primary btn-sm mt-4">
-                        <FiPlusCircle className="mr-2" />
-                        Add Transaction
+                      <a className="btn btn-primary btn-sm gap-2 shadow-md hover:shadow-lg transition-shadow">
+                        <FiPlusCircle /> Add Transaction
                       </a>
                     </Link>
                   </div>
@@ -355,21 +355,19 @@ export default function Dashboard() {
                 )}
               </div>
             </div>
-          </div>
-
-          {/* Right Column - AI Advice and Financial Tips */}
+          </div>          {/* Right Column - AI Advice and Financial Tips */}
           <div className="space-y-8">
             {/* AI Financial Advice */}
             <AIAdvice />
             
             {/* Financial Tips */}
-            <div className="card bg-base-100 shadow-xl">
+            <div className="card bg-base-100 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300">
               <div className="card-body">
-                <h2 className="card-title">Financial Tips</h2>
-                <div className="space-y-4 mt-4">
+                <h2 className="card-title font-bold text-xl bg-gradient-to-r from-accent to-info bg-clip-text text-transparent">Financial Tips</h2>
+                <div className="space-y-6 mt-4">
                   {FINANCE_TIPS.slice(0, 3).map((tip, index) => (
-                    <div key={index} className="flex items-start">
-                      <div className={`p-3 rounded-full ${tip.iconColor} bg-opacity-10 mr-4`}>
+                    <div key={index} className="flex items-start hover:translate-x-1 transition-transform">
+                      <div className={`p-3 rounded-full ${tip.iconColor.replace('text-', 'bg-')} bg-opacity-10 mr-4`}>
                         {tip.iconName === "FiPieChart" && <FiPieChart className={tip.iconColor} />}
                         {tip.iconName === "FiTarget" && <FiTarget className={tip.iconColor} />}
                         {tip.iconName === "FiRefreshCw" && <FiRefreshCw className={tip.iconColor} />}
@@ -377,8 +375,8 @@ export default function Dashboard() {
                         {tip.iconName === "FiCreditCard" && <FiCreditCard className={tip.iconColor} />}
                       </div>
                       <div>
-                        <h3 className="font-medium">{tip.title}</h3>
-                        <p className="text-sm text-gray-500">{tip.description}</p>
+                        <h3 className="font-medium text-secondary-content">{tip.title}</h3>
+                        <p className="text-sm text-gray-500 mt-1">{tip.description}</p>
                       </div>
                     </div>
                   ))}
