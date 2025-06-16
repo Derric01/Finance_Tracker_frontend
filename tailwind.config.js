@@ -42,19 +42,6 @@ module.exports = {
   daisyui: {
     themes: [
       {
-        financelight: {
-          "primary": "#10b981",     // Emerald
-          "secondary": "#3b82f6",   // Blue
-          "accent": "#8b5cf6",      // Purple
-          "neutral": "#1e293b",     // Slate
-          "base-100": "#ffffff",    // White
-          "base-200": "#f1f5f9",    // Light gray
-          "base-300": "#e2e8f0",    // Lighter gray
-          "info": "#06b6d4",        // Cyan
-          "success": "#22c55e",     // Green
-          "warning": "#f59e0b",     // Amber
-          "error": "#ef4444",       // Red
-        },
         financedark: {
           "primary": "#34d399",     // Lighter emerald
           "secondary": "#60a5fa",   // Lighter blue

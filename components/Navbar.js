@@ -4,14 +4,13 @@ import { useRouter } from 'next/router';
 import { logout, getUserData } from '../utils/auth';
 import { 
   FiHome, FiDollarSign, FiPieChart, FiTarget, 
-  FiBell, FiUser, FiSettings, FiLogOut, FiMenu, FiX, FiMoon, FiSun
+  FiBell, FiUser, FiSettings, FiLogOut, FiMenu, FiX
 } from 'react-icons/fi';
 
-export default function Navbar({ updateTheme, currentTheme }) {
+function Navbar() {
   const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [userData, setUserData] = useState(null);
-  const isDarkMode = currentTheme === 'financedark';
 
   useEffect(() => {
     // Get user data when component mounts
@@ -21,21 +20,6 @@ export default function Navbar({ updateTheme, currentTheme }) {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-  };  const toggleTheme = () => {
-    // Get the current theme directly from the HTML element
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'financedark' ? 'financelight' : 'financedark';
-    
-    // Update theme at all levels
-    updateTheme(newTheme);
-    
-    // Log for debugging
-    console.log(`Theme toggled from ${currentTheme} to ${newTheme}`);
-    
-    // Force close the dropdown menu after changing theme
-    if (document.activeElement instanceof HTMLElement) {
-      document.activeElement.blur();
-    }
   };
 
   const handleLogout = () => {
@@ -97,7 +81,8 @@ export default function Navbar({ updateTheme, currentTheme }) {
                   Goals
                 </a>
               </Link>
-            </li>          </ul>
+            </li>
+          </ul>
           
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar placeholder">
@@ -106,15 +91,7 @@ export default function Navbar({ updateTheme, currentTheme }) {
               </div>
             </label>
             
-            {/* Theme toggle button */}
-            <button 
-              className="btn btn-ghost btn-circle ml-2" 
-              onClick={toggleTheme} 
-              aria-label="Toggle theme"
-              title={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-            >
-              {isDarkMode ? <FiSun className="text-yellow-300" /> : <FiMoon className="text-blue-400" />}
-            </button><ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
+            <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
               <li className="menu-title">
                 <span>{userData?.name || 'User'}</span>
               </li>
@@ -135,12 +112,6 @@ export default function Navbar({ updateTheme, currentTheme }) {
                 </Link>
               </li>
               <li>
-                <button onClick={toggleTheme}>
-                  {isDarkMode ? <FiSun /> : <FiMoon />}
-                  {isDarkMode ? 'Light Mode' : 'Dark Mode'}
-                </button>
-              </li>
-              <li>
                 <button onClick={handleLogout}>
                   <FiLogOut />
                   Logout
@@ -152,10 +123,6 @@ export default function Navbar({ updateTheme, currentTheme }) {
         
         {/* Mobile Navigation */}
         <div className="flex-none md:hidden">
-          <button className="btn btn-ghost btn-circle" onClick={toggleTheme}>
-            {isDarkMode ? <FiSun className="text-warning" /> : <FiMoon className="text-primary" />}
-          </button>
-          
           <button className="btn btn-ghost btn-circle" onClick={toggleMenu}>
             {isMenuOpen ? <FiX /> : <FiMenu />}
           </button>
@@ -212,15 +179,11 @@ export default function Navbar({ updateTheme, currentTheme }) {
             </li>
             <li>
               <Link href="/settings">
-                <a>                  <FiSettings />
+                <a>
+                  <FiSettings />
                   Settings
-                </a>              </Link>
-            </li>
-            <li>
-              <button onClick={toggleTheme}>
-                {isDarkMode ? <FiSun className="text-yellow-300" /> : <FiMoon className="text-blue-400" />}
-                {isDarkMode ? 'Light Mode' : 'Dark Mode'}
-              </button>
+                </a>
+              </Link>
             </li>
             <li>
               <button onClick={handleLogout} className="text-error">
@@ -231,6 +194,7 @@ export default function Navbar({ updateTheme, currentTheme }) {
           </ul>
         </div>
       )}
-    </div>
-  );
+    </div>  );
 }
+
+export default Navbar;

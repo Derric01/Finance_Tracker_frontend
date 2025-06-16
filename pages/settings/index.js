@@ -12,9 +12,7 @@ export default function Settings() {
       lowBalanceAlert: true,
       budgetAlert: true,
       goalAlert: true
-    },
-    appearance: {
-      theme: 'light',
+    },    appearance: {
       compactView: false,
       showCurrency: true
     },
@@ -157,24 +155,7 @@ export default function Settings() {
             <h2 className="card-title flex items-center">
               <FiEye className="mr-2" /> Appearance
             </h2>
-            <div className="divider my-2"></div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Theme</span>
-                </label>
-                <select 
-                  className="select select-bordered w-full" 
-                  value={settings.appearance.theme}
-                  onChange={(e) => handleSettingChange('appearance', 'theme', e.target.value)}
-                >
-                  <option value="light">Light</option>
-                  <option value="dark">Dark</option>
-                  <option value="system">System Default</option>
-                </select>
-              </div>
-              
+            <div className="divider my-2"></div>            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="form-control">
                 <label className="label cursor-pointer justify-start">
                   <input 

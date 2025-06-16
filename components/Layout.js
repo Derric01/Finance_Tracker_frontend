@@ -3,7 +3,7 @@ import Navbar from './Navbar';
 import { useRouter } from 'next/router';
 import { isAuthenticated } from '../utils/auth';
 
-export default function Layout({ children, updateTheme, currentTheme }) {
+export default function Layout({ children }) {
   const router = useRouter();
   const publicRoutes = ['/login', '/register'];
   
@@ -16,19 +16,10 @@ export default function Layout({ children, updateTheme, currentTheme }) {
       router.push('/login');
     }
   }, [router, isPublicRoute]);
-    // Make sure the HTML element has the theme attribute
-  useEffect(() => {
-    if (currentTheme) {
-      console.log('Layout updating theme to:', currentTheme);
-      document.documentElement.setAttribute('data-theme', currentTheme);
-    }
-  }, [currentTheme]);
-  
-  const isDarkMode = currentTheme === 'financedark';
 
   return (
     <div className="min-h-screen flex flex-col bg-base-100">
-      {!isPublicRoute && <Navbar updateTheme={updateTheme} currentTheme={currentTheme} />}
+      {!isPublicRoute && <Navbar />}
       <main className="flex-grow container mx-auto px-4 py-6">
         {children}
       </main>      <footer className="footer footer-center p-4 bg-base-300 text-base-content">
